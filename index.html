@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dunia Belajar Ceria - Materi Pembelajaran SD & SMP</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f0f9ff;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+
+        /* Header / Navigasi */
+        header {
+            background: linear-gradient(135deg, #ff7675, #fdcb6e);
+            padding: 1rem 2rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 10px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: white;
+            color: #d63031;
+        }
+
+        /* Banner Hero */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: #ffeaa7;
+            border-bottom: 5px dashed #fdcb6e;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            color: #d63031;
+            margin-bottom: 10px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #dfe6e9;
+        }
+
+        .sd-title { color: #0984e3; }
+        .smp-title { color: #00b894; }
+
+        /* Card / Kartu Pelajaran */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+            border: 3px solid #dfe6e9;
+        }
+
+        .card-sd { border-color: #74b9ff; }
+        .card-smp { border-color: #55efc4; }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-header .icon {
+            font-size: 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .badge-sd { background-color: #0984e3; }
+        .badge-smp { background-color: #00b894; }
+
+        /* Accordion (Tombol Materi & Isinya) */
+        .materi-item {
+            margin-top: 10px;
+            border: 2px solid #dfe6e9;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .materi-btn {
+            width: 100%;
+            background: #f8f9fa;
+            border: none;
+            outline: none;
+            padding: 15px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+            color: #2d3436;
+        }
+
+        .materi-btn:hover {
+            background: #e1f5fe;
+        }
+
+        .materi-btn::after {
+            content: '➕';
+            font-size: 0.9rem;
+        }
+
+        .materi-btn.active::after {
+            content: '➖';
+        }
+
+        .materi-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: white;
+            padding: 0 20px;
+        }
+
+        .materi-body {
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .materi-body h4 {
+            color: #d63031;
+            margin-bottom: 10px;
+        }
+
+        .materi-body p, .materi-body ul {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: #4a4a4a;
+        }
+
+        .materi-body ul {
+            margin-left: 20px;
+        }
+
+        .contoh-soal {
+            background: #fff8e1;
+            border-left: 4px solid #ffb300;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2d3436;
+            color: white;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>✏️ Belajar Ceria</h1>
+        <nav>
+            <a href="#sd">Materi SD</a>
+            <a href="#smp">Materi SMP</a>
+        </nav>
+    </header>
+
+    <!-- Banner Hero -->
+    <section class="hero">
+        <h2>Selamat Datang, Sahabat Pintar! 🌟</h2>
+        <p>Pilih pelajaran di bawah ini, klik topik yang ingin kamu pelajari, dan mulailah belajar!</p>
+    </section>
+
+    <div class="container">
+        
+        <!-- SECTION SD -->
+        <h2 class="section-title sd-title" id="sd">🎒 Sekolah Dasar (SD)</h2>
+
+        <!-- Pelajaran 1: Matematika SD -->
+        <div class="card card-sd">
+            <div class="card-header">
+                <div class="icon">🔢</div>
+                <div>
+                    <span class="badge badge-sd">Kelas 1 - 6 SD</span>
+                    <h3>Matematika SD</h3>
+                </div>
+            </div>
+
+            <!-- Bab 1 -->
+            <div class="materi-item">
+                <button class="materi-btn">Bab 1: Operasi Hitung Penjumlahan & Pengurangan</button>
+                <div class="materi-content">
+                    <div class="materi-body">
+                        <h4>Mengenal Penjumlahan dan Pengurangan</h4>
+                        <p>Penjumlahan adalah menggabungkan dua kelompok benda atau angka menjadi satu. Pengurangan adalah mengambil sebagian benda/angka dari kelompoknya.</p>
+                        <ul>
+                            <li><strong>Aturan Dasar:</strong> Kerjakan dari sebelah kiri ke kanan.</li>
+                            <li><strong>Sifat Pertukaran (Penjumlahan):</strong> 5 + 3 hasilnya sama dengan 3 + 5 (yaitu 8).</li>
+                        </ul>
+                        <div class="contoh-soal">
+                            <strong>💡 Contoh Soal:</strong><br>
+                            Budi memiliki 12 apel. Ibu memberinya lagi 8 apel. Berapa jumlah apel Budi sekarang?<br>
+                            <strong>Pembahasan:</strong> 12 + 8 = 20 apel.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bab 2 -->
+            <div class="materi-item">
+                <button class="materi-btn">Bab 2: Perkalian dan Pembagian Dasar</button>
+                <div class="materi-content">
+                    <div class="materi-body">
+                        <h4>Konsep Perkalian dan Pembagian</h4>
+                        <p>Perkalian adalah <strong>penjumlahan berulang</strong>, sedangkan pembagian adalah <strong>pengurangan berulang</strong> sampai habis.</p>
+                        <ul>
+                            <li><strong>Contoh Perkalian:</strong> 3 × 4 artinya 4 + 4 + 4 = 12.</li>
+                            <li><strong>Contoh Pembagian:</strong> 12 ÷ 3 artinya 12 - 3 - 3 - 3 - 3 = 0 (ada 4 kali pengurangan, jadi jawabannya 4).</li>
+                        </ul>
+                        <div class="contoh-soal">
+                            <strong>💡 Contoh Soal:</strong><br>
+                            Ada 15 permen yang dibagi rata kepada 3 anak. Berapa permen yang diterima setiap anak?<br>
+                            <strong>Pembahasan:</strong> 15 ÷ 3 = 5 permen.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pelajaran 2: IPA SD -->
+        <div class="card card-sd">
+            <div class="card-header">
+                <div class="icon">🌱</div>
+                <div>
+                    <span class="badge badge-sd">Kelas 4 - 6 SD</span>
+                    <h3>Ilmu Pengetahuan Alam (IPA) SD</h3>
+                </div>
+            </div>
+
+            <!-- Bab 1 -->
+            <div class="materi-item">
+                <button class="materi-btn">Bab 1: Daur Hidup Hewan (Metamorfosis)</button>
+                <div class="materi-content">
+                    <div class="materi-body">
+                        <h4>Mengenal Metamorfosis</h4>
+                        <p>Metamorfosis adalah perubahan bentuk tubuh hewan dalam tahap perkembangannya.</p>
+                        <ul>
+                            <li><strong>Metamorfosis Sempurna:</strong> Mengalami tahapan kepompong (Pupa).<br><em>Urutan: Telur ➔ Ulat (Larva) ➔ Kepompong (Pupa) ➔ Kupu-kupu Dewasa.</em></li>
+                            <li><strong>Metamorfosis Tidak Sempurna:</strong> Tidak mengalami tahapan kepompong.<br><em>Urutan: Telur ➔ Nimfa (serangga muda) ➔ Belalang Dewasa.</em></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bab 2 -->
+            <div class="materi-item">
+                <button class="materi-btn">Bab 2: Sistem Tata Surya</button>
+                <div class="materi-content">
+                    <div class="materi-body">
+                        <h4>Anggota Tata Surya</h4>
+                        <p>Tata surya kita terdiri dari Matahari sebagai pusatnya, serta 8 planet yang mengelilinginya.</p>
+                        <ul>
+                            <li><strong>Matahari:</strong> Bintang besar tempat planet mengelilinginya.</li>
+                            <li><strong>Urutan Planet:</strong> Merkurius, Venus, Bumi, Mars, Yupiter, Saturnus, Uranus, Neptunus.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- SECTION SMP -->
+        <h2 class="section-title smp-title" id="smp">🏫 Sekolah Menengah Pertama (SMP)</h2>
+
+        <!-- Pelajaran 3: Matematika SMP -->
+        <div class="card card-smp">
+            <div class="card-header">
+                <div class="icon">📐</div>
+                <div>
+                    <span class="badge badge-smp">Kelas 7 - 9 SMP</span>
+                    <h3>Matematika SMP</h3>
+                </div>
+            </div>
+
+            <!-- Bab 1 -->
+            <div class="materi-item">
+                <button class="materi-btn">Bab 1: Aljabar Dasar</button>
+                <div class="materi-content">
+                    <div class="materi-body">
+                        <h4>Mengenal Unsur-unsur Aljabar</h4>
+                        <p>Aljabar menggunakan huruf (variabel) untuk mewakili angka yang belum diketahui nilainya.</p>
+                        <ul>
+                            <li><strong>Variabel:</strong> Huruf pengganti angka, contoh: <em>x, y, a, b</em>.</li>
+                            <li><strong>Koefisien:</strong> Angka di depan variabel. Pada <code>3x</code>, angka 3 adalah koefisien.</li>
+                            <li><strong>Konstanta:</strong> Angka berdiri sendiri tanpa huruf, contoh pada <code>3x + 5</code>, angka 5 adalah konstanta.</li>
+                        </ul>
+                        <div class="contoh-soal">
+                            <strong>💡 Contoh Soal:</strong><br>
+                            Selesaikan persamaan: 2x + 4 = 10<br>
+                            <strong>Pembahasan:</strong><br>
+                            2x = 10 - 4<br>
+                            2x = 6<br>
+                            x = 6 ÷ 2 ➔ <strong>x = 3</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bab 2 -->
+            <div class="materi-item">
+                <button class="materi-btn">Bab 2: Teorema Pythagoras</button>
+                <div class="materi-content">
+                    <div class="materi-body">
+                        <h4>Rumus Segitiga Siku-siku</h4>
+                        <p>Teorema Pythagoras digunakan untuk mencari panjang salah satu sisi pada segitiga siku-siku.</p>
+                        <ul>
+                            <li><strong>Rumus Utama:</strong> <code>a² + b² = c²</code></li>
+                            <li><em>c</em> adalah sisi miring (sisi terpanjang), sedangkan <em>a</em> dan <em>b</em> adalah sisi tegaknya.</li>
+                        </ul>
+                        <div class="contoh-soal">
+                            <strong>💡 Contoh Soal:</strong><br>
+                            Diketahui a = 3 cm dan b = 4 cm. Berapakah panjang sisi miring (c)?<br>
+                            <strong>Pembahasan:</strong><br>
+                            c² = 3² + 4² = 9 + 16 = 25<br>
+                            c = √25 ➔ <strong>c = 5 cm</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pelajaran 4: IPA SMP -->
+        <div class="card card-smp">
+            <div class="card-header">
+                <div class="icon">🔬</div>
+                <div>
+                    <span class="badge badge-smp">Kelas 7 - 9 SMP</span>
+                    <h3>IPA Terpadu SMP</h3>
+                </div>
+            </div>
+
+            <!-- Bab 1 -->
+            <div class="materi-item">
+                <button class="materi-btn">Bab 1: Hukum Newton tentang Gerak</button>
+                <div class="materi-content">
+                    <div class="materi-body">
+                        <h4>3 Hukum Newton tentang Gerak</h4>
+                        <ul>
+                            <li><strong>Hukum I Newton (Kelembaman):</strong> Benda cenderung mempertahankan posisinya jika tidak ada gaya luar. (Contoh: tubuh terdorong ke depan saat mobil direm mendadak).</li>
+                            <li><strong>Hukum II Newton (F = m × a):</strong> Percepatan benda berbanding lurus dengan gaya yang diberikan.</li>
+                            <li><strong>Hukum III Newton (Aksi - Reaksi):</strong> Setiap aksi menghasilkan reaksi yang sama besar tetapi berlawanan arah.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bab 2 -->
+            <div class="materi-item">
+                <button class="materi-btn">Bab 2: Sistem Pernapasan Manusia</button>
+                <div class="materi-content">
+                    <div class="materi-body">
+                        <h4>Organ dan Fungsi Pernapasan</h4>
+                        <p>Proses pernapasan bertujuan untuk mengambil Oksigen (O₂) dan mengeluarkan Karbondioksida (CO₂).</p>
+                        <ul>
+                            <li><strong>Hidung:</strong> Menyaring debu dan menyesuaikan suhu udara.</li>
+                            <li><strong>Tenggorokan (Trakea):</strong> Saluran penghubung udara menuju paru-paru.</li>
+                            <li><strong>Alveolus:</strong> Tempat pertukaran gas O₂ dan CO₂ di dalam paru-paru.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Dunia Belajar Ceria. Dibuat untuk Generasi Penerus Bangsa!</p>
+    </footer>
+
+    <!-- JavaScript untuk Membuka & Menutup Materi ketika Diklik -->
+    <script>
+        const materiButtons = document.querySelectorAll('.materi-btn');
+
+        materiButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+                const content = button.nextElementSibling;
+
+                if (button.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = 0;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
